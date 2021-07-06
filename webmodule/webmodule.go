@@ -1,6 +1,7 @@
 package webmodule
 
 import (
+	v "github.com/RHsyseng/pullsecret-validator/validator"
 	"html/template"
 	"net/http"
 )
@@ -23,8 +24,9 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, body)
 
 	} else {
+
 		r.ParseForm()
-		res := validatePS(r.FormValue("pullsecret"))
+		res := v.Validate([]byte(r.FormValue("pullsecret")))
 
 		body := Data{r.FormValue("pullsecret"), res}
 		t, _ := template.ParseFiles("web.html")
