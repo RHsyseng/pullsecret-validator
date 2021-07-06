@@ -35,7 +35,7 @@ func Validate(input []byte) WebData {
 		sDec, _ := b64.StdEncoding.DecodeString(v.Auth)
 		auth := string(sDec)
 		err := loginToRegistry(k, auth)
-		if err == nil && strings.Contains(err.Error(), CONN_ERROR) {
+		if err == nil {
 			resultOKArray = append(resultOKArray, k+"\n"...)
 		} else if err != nil && strings.Contains(err.Error(), CONN_ERROR) {
 			resultKOConArray = append(resultKOConArray, k+"\n"...)
