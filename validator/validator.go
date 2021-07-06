@@ -36,9 +36,10 @@ func Validate(input []byte) WebData {
 		err, _ := loginToRegistry(k, auth)
 		if err != nil {
 			resultKOArray = append(resultKOArray, k+"\n"...)
-		}
-		resultOKArray = append(resultOKArray, k+"\n"...)
 
+		} else {
+			resultOKArray = append(resultOKArray, k+"\n"...)
+		}
 	}
 
 	return WebData{input, string(resultOKArray), string(resultKOArray), string(resultKOConArray)}
@@ -48,7 +49,7 @@ func loginToRegistry(url, auth string) (err error, bodyError string) {
 
 	req, err := http.NewRequest("GET", "https://"+url+"/v2/auth", nil)
 	if err != nil {
-		// handle err
+		return err, "Error doing request"
 	}
 	s := strings.Split(auth, ":")
 	req.SetBasicAuth(s[0], s[1])
