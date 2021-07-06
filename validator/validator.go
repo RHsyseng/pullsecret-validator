@@ -1,6 +1,5 @@
 package validator
 
-
-func validate( input String) string {
+func validate(input String) string {
 
 }
