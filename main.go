@@ -1,23 +1,15 @@
 package main
 
 import (
-	"html/template"
+	web "github.com/RHsyseng/pullsecret-validator/webmodule"
 	"log"
 	"net/http"
-	web "github.com/RHsyseng/pullsecret-validator/webmodule"
 )
 
 type Data struct {
 	Input  interface{}
 	Result interface{}
 }
-
-
-
-func validatePS (input string) string{
-
-}
-
 
 func main() {
 

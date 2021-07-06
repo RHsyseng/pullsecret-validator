@@ -1,6 +1,9 @@
 package webmodule
 
-import "net/http"
+import (
+	"html/template"
+	"net/http"
+)
 
 type Data struct {
 	Input  interface{}
@@ -29,4 +32,3 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 	}
 }
-
