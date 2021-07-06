@@ -5,9 +5,9 @@
 <body>
 <form action="/" method="post">
     Pull Secret in json format:<br>
-    <textarea name="pullsecret" rows="20" cols="100">write your pull secret in json format here</textarea>
+    <textarea name="pullsecret" rows="20" cols="50">{{ .Input }}</textarea>
     <input type="submit" value="Validate">
-    <textarea name="result" rows="20" cols="100"></textarea>
+    <textarea name="body" rows="20" cols="50">{{ .Result }}</textarea>
 </form>
 </body>
 </html>

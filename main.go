@@ -1,39 +1,41 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 )
 
+type Data struct {
+	Input  interface{}
+	Result interface{}
+}
 
+func Validate(w http.ResponseWriter, r *http.Request) {
 
-func validate(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("method:", r.Method) //get request method
 	if r.URL.Path != "/" {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
 	}
 
 	if r.Method == "GET" {
+		body := Data{"Input your pull secret in json format", nil}
 		t, _ := template.ParseFiles("web.html")
-		t.Execute(w, nil)
+		t.Execute(w, body)
+
 	} else {
 		r.ParseForm()
-		// logic part of log in
-		fmt.Println("pull secret:", r.Form["pullsecret"])
-		fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
-		ps := r.FormValue("pullsecret")
-		fmt.Fprintf(w, "Pull = %s\n", ps)
+		body := Data{r.FormValue("pullsecret"), r.FormValue("pullsecret")}
 
+		t, _ := template.ParseFiles("web.html")
+		t.Execute(w, body)
 
 	}
 }
 
 func main() {
 
-	http.HandleFunc("/", validate)
+	http.HandleFunc("/", Validate)
 	err := http.ListenAndServe(":80", nil) // setting listening port
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
