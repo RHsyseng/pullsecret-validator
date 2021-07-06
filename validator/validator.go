@@ -10,18 +10,18 @@ const (
 	ERROR = "error"
 )
 
-func Validate(input []byte) string {
+func Validate(input []byte) WebData {
 	var payload Payload
 	err := json.Unmarshal(input, &payload)
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(ERROR, err)
 	}
 
 	for k, v := range payload.Auths {
-		fmt.Println("Esto es una key: ", k)
-		fmt.Println("y esto su valor: ", v.Auth)
+		//fmt.Println("Esto es una key: ", k)
 		//fmt.Println("y esto su valor: ", v.Auth)
-		return k
+		//fmt.Println("y esto su valor: ", v.Auth)
+		return WebData{input, k, v, k}
 	}
-	return ""
+	return WebData{}
 }

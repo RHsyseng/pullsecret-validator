@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Pull Secret Validator</title>
+</head>
+<body>
+<div> Pull secret validator. Paste it in json format: </div>
+<form action="/" method="post">
+    <div>
+    <textarea name="pullsecret" rows="20" cols="50">{{ .Input }}</textarea>
+    <input type="submit" value="Validate">
+    Result OK:
+    <textarea style="color:#21a818" name="bodyOK" rows="20" cols="50">{{ .ResultOK }}</textarea><br>
+    Result KO:
+    <textarea style="color:#de0618" name="bodyKO" rows="20" cols="50">{{ .ResultKO }}</textarea><br>
+    Result Problem with Connectivity:
+    <textarea style="color:#de6406" name="bodyCon" rows="20" cols="50">{{ .ResultCon }}</textarea> <br>
+    </div>
+</form>
+</body>
+</html>

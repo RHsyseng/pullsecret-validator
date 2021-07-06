@@ -6,3 +6,10 @@ type Payload struct {
 		Email string `json:"email,omitempty"`
 	}
 }
+
+type WebData struct {
+	Input     interface{}
+	ResultOK  interface{}
+	ResultKO  interface{}
+	ResultCon interface{}
+}

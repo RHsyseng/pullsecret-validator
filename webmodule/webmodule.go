@@ -6,11 +6,6 @@ import (
 	"net/http"
 )
 
-type Data struct {
-	Input  interface{}
-	Result interface{}
-}
-
 func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path != "/" {
@@ -19,17 +14,17 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method != "POST" {
-		body := Data{"Input your pull secret in json format", nil}
-		t, _ := template.ParseFiles("web.html")
+		body := v.WebData{"Input your pull secret in json format", nil, nil, nil}
+		t, _ := template.ParseFiles("webmodule/web.html")
 		t.Execute(w, body)
 
 	} else {
 
 		r.ParseForm()
-		res := v.Validate([]byte(r.FormValue("pullsecret")))
+		resData := v.Validate([]byte(r.FormValue("pullsecret")))
 
-		body := Data{r.FormValue("pullsecret"), res}
-		t, _ := template.ParseFiles("web.html")
+		body := v.WebData{r.FormValue("pullsecret"), resData.ResultOK, resData.ResultKO, resData.ResultCon}
+		t, _ := template.ParseFiles("webmodule/web.html")
 		t.Execute(w, body)
 
 	}
