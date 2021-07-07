@@ -1,4 +1,4 @@
-FROM golang AS builder
+FROM quay.io/amorgant/alpine:latest AS builder
 RUN mkdir /build
 ADD . /build/
 WORKDIR /build
@@ -7,7 +7,7 @@ RUN go mod vendor
 RUN go mod verify
 RUN go build
 
-FROM alpine
+FROM quay.io/amorgant/alpine:latest
 RUN adduser -S -D -H -h /app appuser
 USER appuser
 COPY --from=builder /build/pullsecret-validator /app/
