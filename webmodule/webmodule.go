@@ -15,7 +15,11 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
 		body := v.WebData{"Input your pull secret in json format", nil, nil, nil}
-		t, _ := template.ParseFiles("webmodule/web.html")
+		t, err := template.ParseFiles("webmodule/web.html")
+		if err != nil {
+			http.Error(w, "404 not found.", http.StatusNotFound)
+			return
+		}
 		t.Execute(w, body)
 
 	} else {
