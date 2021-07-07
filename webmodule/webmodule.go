@@ -4,6 +4,8 @@ import (
 	"fmt"
 	v "github.com/RHsyseng/lib-ps-validator"
 	"html/template"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 )
