@@ -8,8 +8,7 @@ RUN go mod verify
 RUN go build
 
 FROM quay.io/amorgant/golang:latest
-RUN adduser /app appuser
-USER appuser
+
 COPY --from=builder /build/pullsecret-validator /app/
 WORKDIR /app
 CMD ["./pullsecret-validator"]
