@@ -1,7 +1,6 @@
 package webmodule
 
 import (
-	"fmt"
 	v "github.com/RHsyseng/lib-ps-validator"
 	"html/template"
 	"net/http"
@@ -15,13 +14,11 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method != "POST" {
-		fmt.Println("Entra distinto post")
 		body := v.WebData{"Input your pull secret in json format", nil, nil, nil}
 		t, _ := template.ParseFiles("webmodule/web.html")
 		t.Execute(w, body)
 
 	} else {
-		fmt.Println("entra post")
 		r.ParseForm()
 		resData := v.Validate([]byte(r.FormValue("pullsecret")))
 
@@ -30,5 +27,4 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, body)
 
 	}
-	fmt.Println("finaaaaalllll")
 }
