@@ -17,7 +17,7 @@ func main() {
 	mux.HandleFunc("/", web.HandleRequest)
 	fileServer := http.FileServer(http.Dir("./webmodule/"))
 	mux.Handle("/webmodule/", http.StripPrefix("/webmodule", fileServer))
-	err := http.ListenAndServe(":80", mux) // setting listening port
+	err := http.ListenAndServe(":8080", mux) // setting listening port
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
