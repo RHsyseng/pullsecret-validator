@@ -1,7 +1,7 @@
 package webmodule
 
 import (
-	v "github.com/RHsyseng/pullsecret-validator/validator"
+	v "github.com/RHsyseng/lib-ps-validator"
 	"html/template"
 	"net/http"
 )
