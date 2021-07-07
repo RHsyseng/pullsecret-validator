@@ -1,3 +1,0 @@
-# github.com/RHsyseng/lib-ps-validator v0.0.3
-## explicit
-github.com/RHsyseng/lib-ps-validator
