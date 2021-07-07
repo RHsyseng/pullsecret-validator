@@ -6,11 +6,6 @@ import (
 	"net/http"
 )
 
-type Data struct {
-	Input  interface{}
-	Result interface{}
-}
-
 func main() {
 
 	mux := http.NewServeMux()
