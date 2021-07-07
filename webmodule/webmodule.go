@@ -28,6 +28,7 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 		r.ParseForm()
+
 		resData := v.Validate([]byte(r.FormValue("pullsecret")))
 
 		body := v.WebData{r.FormValue("pullsecret"), resData.ResultOK, resData.ResultKO, resData.ResultCon}
