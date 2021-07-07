@@ -12,15 +12,7 @@ type Data struct {
 }
 
 func main() {
-	/*bs := []byte(`{"auths": {
-		"assisted-ipv6-disconnecter000": {
-			"auth": "ZHVtbXk6ZHVtbXk",
-			"email": "jhendrix@karmalabs.com"
-		},
-		"bm-cluster-1-hyper.e2e.bos.redhat.com5000": {
-			"auth": "a25pOmtuaQ=="
-		}
-	}}`)*/
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", web.HandleRequest)
 	fileServer := http.FileServer(http.Dir("./webmodule/"))
@@ -29,22 +21,5 @@ func main() {
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	/*
-		ps := flag.String("f", "", "Pull secret file ")
-		h := flag.Bool("h", false, "Help usage example: ./pullsecret-validator -f /root/pullsecret.json")
-		flag.Parse()
-		tail := flag.Args()
 
-		if *h {
-			flag.PrintDefaults()
-			os.Exit(1)
-		}
-		if len(tail) < 1 {
-			flag.PrintDefaults()
-			fmt.Println("sssss")
-			os.Exit(2)
-		}
-
-		fmt.Println(ps)
-	*/
 }
