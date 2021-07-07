@@ -2,6 +2,9 @@ FROM golang:1.14.9-alpine AS builder
 RUN mkdir /build
 ADD . /build/
 WORKDIR /build
+RUN go mod download
+RUN go mod vendor
+RUN go mod verify
 RUN go build
 
 FROM alpine
