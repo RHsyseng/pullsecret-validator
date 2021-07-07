@@ -29,4 +29,22 @@ func main() {
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
+	/*
+		ps := flag.String("f", "", "Pull secret file ")
+		h := flag.Bool("h", false, "Help usage example: ./pullsecret-validator -f /root/pullsecret.json")
+		flag.Parse()
+		tail := flag.Args()
+
+		if *h {
+			flag.PrintDefaults()
+			os.Exit(1)
+		}
+		if len(tail) < 1 {
+			flag.PrintDefaults()
+			fmt.Println("sssss")
+			os.Exit(2)
+		}
+
+		fmt.Println(ps)
+	*/
 }

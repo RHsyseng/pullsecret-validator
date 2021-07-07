@@ -19,56 +19,58 @@
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="jumbotron">
-				<h2>
-					RHSysEng - Pull Secret Validator
-				</h2>
-				<p>
-					This is a tool to validate the Pull Secret to know if auth entries are valid or have been expired
-				</p>
+			<div class="jumbotron card card-block">
+				<h3>
+					Pull Secret Validator
+				</h3>
+
+					<span>This is a tool to validate the Pull Secret to know if auth entries are valid or have been expired</span>
+
 			</div>
 			<form role="form" action="/" method="post" >
 				<div class="form-group">
 
 					<textarea name="pullsecret" rows="10" class="col-md-12">{{ .Input }}</textarea>
 				</div>
-				<input type="submit" class="btn btn-primary" value="Validate">
+				<input id="sendData" type="submit" class="btn btn-primary" value="Validate">
+			</form>
+			<div id="waiting"></div>
+			<br>
+		</div>
 
-			</form>
-		</div>
-	</div><br><br>
-	<div class="row">
-		<div class="col-md-4">
-			<h2>
-				Valid Auths Entries:
-			</h2>
-			<form role="form">
-				<div class="form-group">
-					<textarea style="color:#21a818" name="bodyOK" class="form-control" rows="10" >{{ .ResultOK }}</textarea>
-				</div>
-			</form>
-		</div>
-		<div class="col-md-4">
-			<h2>
-				Expired Auths Entries:
-			</h2>
-			<form role="form">
-				<div class="form-group">
-					<textarea style="color:#de0618" name="bodyKO" class="form-control" rows="10">{{ .ResultKO }}</textarea>
-				</div>
-			</form>
-		</div>
-		<div class="col-md-4">
-			<h2>
-				Connection Issues:
-			</h2>
-			<form role="form">
-				<div class="form-group">
-					<textarea style="color:#de6406" name="bodyCon" class="form-control" rows="10" >{{ .ResultCon }}</textarea>
-				</div>
-			</form>
-		</div>
 	</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h2>
+					Valid Auths Entries:
+				</h2>
+				<form role="form">
+					<div class="form-group">
+						<textarea style="color:#21a818" name="bodyOK" class="form-control" rows="10" >{{ .ResultOK }}</textarea>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<h2>
+					Expired Auths Entries:
+				</h2>
+				<form role="form">
+					<div class="form-group">
+						<textarea style="color:#de0618" name="bodyKO" class="form-control" rows="10">{{ .ResultKO }}</textarea>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<h2>
+					Connection Issues:
+				</h2>
+				<form role="form">
+					<div class="form-group">
+						<textarea style="color:#de6406" name="bodyCon" class="form-control" rows="10" >{{ .ResultCon }}</textarea>
+					</div>
+				</form>
+			</div>
+		</div>
 </div>
 
     <script src="/webmodule/js/jquery.min.js"></script>
