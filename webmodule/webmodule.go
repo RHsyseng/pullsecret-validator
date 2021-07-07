@@ -1,11 +1,9 @@
 package webmodule
 
 import (
-	"fmt"
 	v "github.com/RHsyseng/lib-ps-validator"
 	"html/template"
 	"net/http"
-	"os"
 )
 
 func HandleRequest(w http.ResponseWriter, r *http.Request) {
@@ -18,7 +16,6 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		body := v.WebData{nil, nil, nil, nil}
 		t, err := template.ParseFiles("webmodule/web.html")
-		fmt.Println(os.Getwd())
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusNotFound)
@@ -33,8 +30,6 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 		body := v.WebData{r.FormValue("pullsecret"), resData.ResultOK, resData.ResultKO, resData.ResultCon}
 		t, err := template.ParseFiles("webmodule/web.html")
-
-		fmt.Println(os.Getwd())
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusNotFound)
