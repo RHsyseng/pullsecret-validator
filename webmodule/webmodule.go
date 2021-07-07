@@ -16,7 +16,7 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method != "POST" {
-		body := v.WebData{"Input your pull secret in json format", nil, nil, nil}
+		body := v.WebData{nil, nil, nil, nil}
 		t, err := template.ParseFiles("webmodule/web.html")
 		fmt.Println(os.Getwd())
 
