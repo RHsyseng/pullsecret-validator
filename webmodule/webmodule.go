@@ -17,7 +17,7 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
 		body := v.WebData{"Input your pull secret in json format", nil, nil, nil}
-		t, err := template.ParseFiles("./webmodule/web.html")
+		t, err := template.ParseFiles("/opt/app-root/src/webmodule/web.html")
 		fmt.Println(os.Getwd())
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusNotFound)
@@ -30,7 +30,7 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		resData := v.Validate([]byte(r.FormValue("pullsecret")))
 
 		body := v.WebData{r.FormValue("pullsecret"), resData.ResultOK, resData.ResultKO, resData.ResultCon}
-		t, err := template.ParseFiles("./webmodule/web.html")
+		t, err := template.ParseFiles("/opt/app-root/src/webmodule/web.html")
 		fmt.Println(os.Getwd())
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusNotFound)
