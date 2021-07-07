@@ -27,7 +27,7 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		resData := v.Validate([]byte(r.FormValue("pullsecret")))
 
 		body := v.WebData{r.FormValue("pullsecret"), resData.ResultOK, resData.ResultKO, resData.ResultCon}
-		t, _ := template.ParseFiles("./webmodule/web.html")
+		t, err := template.ParseFiles("./webmodule/web.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusNotFound)
 			return
