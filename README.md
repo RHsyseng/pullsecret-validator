@@ -10,6 +10,10 @@ The response will be in three column to get the valid, expired entries as well a
 ![img.png](img.png)
 
 
+## Use it: Endpoint public (just for SysEng staff)
+
+** http://pullsecret-validator-pullsecret-validator.apps.shift.cloud.lab.eng.bos.redhat.com/ **
+
 ### Developer notes
 
 ```
