@@ -1,6 +1,7 @@
 # Pull Secret Validator
 
 This is a tool to validate the Pull Secret to know if auth entries are valid or have been expired
+**This repository and its contents are completely UNSUPPORTED in any way and are not part of official documentation.**
 
 ## How it works:
 
